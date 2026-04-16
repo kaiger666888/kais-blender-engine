@@ -157,6 +157,33 @@ except Exception as e:
     }
 
 
+class RunScriptParams(BaseModel):
+    script: str = Field(..., description="要执行的 Blender Python 脚本")
+    timeout: int = Field(60, description="超时秒数")
+
+
+@app.post("/run/script")
+async def run_script(params: RunScriptParams):
+    """执行任意 Blender Python 脚本并返回输出"""
+    script_file = CACHE_DIR / f"custom_{int(time.time())}.py"
+    script_file.write_text(params.script, encoding="utf-8")
+    try:
+        result = subprocess.run(
+            [str(BLENDER_EXE), "-b", "--python", str(script_file)],
+            capture_output=True, text=True, timeout=params.timeout
+        )
+        return {
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+            "returncode": result.returncode,
+        }
+    except subprocess.TimeoutExpired:
+        raise HTTPException(504, "脚本执行超时")
+    finally:
+        if script_file.exists():
+            script_file.unlink()
+
+
 # ── 插件管理 ──────────────────────────────────────────────
 
 def _get_addons_dir() -> Path:
