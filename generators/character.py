@@ -101,7 +101,7 @@ for d in prefs.devices:
         print(f"启用 GPU: {{d.name}}")
 
 # 多角度渲染
-angles = json.loads(r\\'\\'\\'{angles_json}\\'\\'\\'')
+angles = {angles_json}
 output_paths = []
 
 for i, cfg in enumerate(angles):

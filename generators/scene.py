@@ -114,7 +114,7 @@ scene.render.resolution_x = 1920
 scene.render.resolution_y = 1080
 
 # 多角度渲染
-angles = json.loads(r\\'\\'\\'{angles_json}\\'\\'\\'')
+angles = {angles_json}
 output_paths = []
 
 for i, cfg in enumerate(angles):
