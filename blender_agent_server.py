@@ -8,7 +8,7 @@ from typing import Optional
 import requests as http_requests
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from config import BLENDER_EXE, CACHE_DIR, OUTPUT_DIR, RENDER_TIMEOUT
 from generators.character import CharacterParams, generate_character_script
