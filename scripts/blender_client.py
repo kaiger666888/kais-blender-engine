@@ -23,7 +23,7 @@ DEFAULT_TIMEOUT = 300
 
 
 class BlenderAgentClient:
-    def __init__(self, windows_ip: str = "192.168.1.100", port: int = 8080):
+    def __init__(self, windows_ip: str = "192.168.71.38", port: int = 8080):
         self.base_url = f"http://{windows_ip}:{port}"
         self.smb_mount = SMB_MOUNT
 
@@ -219,7 +219,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="kais-blender: 远程 Blender 渲染客户端"
     )
-    parser.add_argument("--server-ip", default="192.168.1.100", help="Windows Blender Server IP")
+    parser.add_argument("--server-ip", default="192.168.71.38", help="Windows Blender Server IP")
     parser.add_argument("--port", type=int, default=8080, help="Server 端口")
     parser.add_argument("--output-dir", default="./outputs", help="输出目录")
     parser.add_argument("--timeout", type=int, default=300, help="渲染超时(秒)")

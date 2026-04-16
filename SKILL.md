@@ -36,11 +36,11 @@ sudo mkdir -p /mnt/blender_agent
 
 # 3. 配置 SMB 挂载（替换 IP 为实际 Windows IP）
 # 手动挂载测试：
-sudo mount -t cifs //192.168.1.100/BlenderAgent /mnt/blender_agent \
+sudo mount -t cifs //192.168.71.38/BlenderAgent /mnt/blender_agent \
   -o guest,uid=$(id -u),gid=$(id -g),file_mode=0777,dir_mode=0777
 
 # 永久挂载（写入 fstab）：
-echo "//192.168.1.100/BlenderAgent /mnt/blender_agent cifs guest,uid=$(id -u),gid=$(id -g),file_mode=0777,dir_mode=0777,_netdev,x-systemd.automount 0 0" | sudo tee -a /etc/fstab
+echo "//192.168.71.38/BlenderAgent /mnt/blender_agent cifs guest,uid=$(id -u),gid=$(id -g),file_mode=0777,dir_mode=0777,_netdev,x-systemd.automount 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
 ```
 
@@ -48,7 +48,7 @@ sudo mount -a
 
 ```bash
 python3 ~/.openclaw/workspace/skills/kais-blender/scripts/blender_client.py health \
-  --server-ip 192.168.1.100 --port 8080
+  --server-ip 192.168.71.38 --port 8080
 ```
 
 ## 使用方法
@@ -57,7 +57,7 @@ python3 ~/.openclaw/workspace/skills/kais-blender/scripts/blender_client.py heal
 
 ```bash
 python3 ~/.openclaw/workspace/skills/kais-blender/scripts/blender_client.py character \
-  --server-ip 192.168.1.100 \
+  --server-ip 192.168.71.38 \
   --name hero_001 \
   --gender male \
   --height 1.75 \
@@ -71,7 +71,7 @@ python3 ~/.openclaw/workspace/skills/kais-blender/scripts/blender_client.py char
 
 ```bash
 python3 ~/.openclaw/workspace/skills/kais-blender/scripts/blender_client.py scene \
-  --server-ip 192.168.1.100 \
+  --server-ip 192.168.71.38 \
   --name cyberpunk_room \
   --scene-type interior \
   --style cyberpunk \
@@ -90,7 +90,7 @@ import sys
 sys.path.insert(0, '/home/kai/.openclaw/workspace/skills/kais-blender/scripts')
 from blender_client import BlenderAgentClient
 
-client = BlenderAgentClient(windows_ip="192.168.1.100")
+client = BlenderAgentClient(windows_ip="192.168.71.38")
 result = client.generate_character(name="hero_001", camera_preset="standard_8")
 # result["images"] -> 本地文件路径列表
 ```
