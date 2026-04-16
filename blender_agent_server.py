@@ -40,7 +40,9 @@ async def generate_character(
         )
 
         if not output_files:
-            raise HTTPException(500, f"渲染失败: {result.stderr[-1000:]}")
+            stderr_tail = result.stderr[-2000:] if result.stderr else "no stderr"
+            stdout_tail = result.stdout[-2000:] if result.stdout else "no stdout"
+            raise HTTPException(500, f"渲染失败:\nstdout: {stdout_tail}\nstderr: {stderr_tail}")
 
         background_tasks.add_task(
             lambda: script_file.unlink() if script_file.exists() else None
@@ -110,6 +112,48 @@ def health_check():
         "blender_path": str(BLENDER_EXE),
         "cache_dir": str(CACHE_DIR),
         "output_dir": str(OUTPUT_DIR),
+    }
+
+
+@app.get("/debug/mpfb")
+def debug_mpfb():
+    """测试 MPFB2 是否在 headless 模式下可用"""
+    test_script = '''
+import sys
+print("=== MPFB2 Debug ===")
+print("Python: " + sys.version)
+
+# 测试 1: 模块导入
+try:
+    from mpfb.services.HumanService import HumanService
+    from mpfb.services.TargetService import TargetService
+    print("PASS: MPFB modules imported")
+except ImportError as e:
+    print("FAIL: Cannot import MPFB - " + str(e))
+    sys.exit(1)
+
+# 测试 2: create_human
+try:
+    basemesh = HumanService.create_human(feet_on_ground=True, scale=0.1)
+    print("PASS: HumanService.create_human() returned " + str(type(basemesh)))
+    print("PASS: basemesh name = " + basemesh.name)
+    print("PASS: vertex count = " + str(len(basemesh.data.vertices)))
+except Exception as e:
+    import traceback
+    print("FAIL: create_human failed")
+    print(str(e))
+    traceback.print_exc()
+'''
+    script_file = CACHE_DIR / "debug_mpfb.py"
+    script_file.write_text(test_script, encoding="utf-8")
+    result = subprocess.run(
+        [str(BLENDER_EXE), "-b", "--python", str(script_file)],
+        capture_output=True, text=True, timeout=60
+    )
+    return {
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+        "returncode": result.returncode,
     }
 
 
