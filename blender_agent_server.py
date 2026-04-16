@@ -161,34 +161,51 @@ except Exception as e:
 
 def _get_addons_dir() -> Path:
     """获取 Blender 用户 addons 目录，自动检测版本"""
-    import re
-    # 从 BLENDER_EXE 路径提取版本号
-    version = "4.0"  # 默认
-    m = re.search(r"(\d+\.\d+)", str(BLENDER_EXE))
-    if m:
-        version = m.group(1)
+    import re, subprocess
 
-    # 尝试多个可能路径
-    candidates = [
-        Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender" / version / "scripts" / "addons",
-        Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender" / "4.0" / "scripts" / "addons",
-    ]
+    # 方法1: 从 Blender 启动信息提取版本
+    version = None
+    try:
+        result = subprocess.run(
+            [str(BLENDER_EXE), "--version"],
+            capture_output=True, text=True, timeout=10
+        )
+        m = re.search(r"Blender (\d+\.\d+)", result.stdout)
+        if m:
+            version = m.group(1)
+    except:
+        pass
 
-    # 也扫描已存在的版本目录
+    # 方法2: 从路径猜测
+    if not version:
+        m = re.search(r"(\d+\.\d+)", str(BLENDER_EXE))
+        if m:
+            version = m.group(1)
+
+    if not version:
+        version = "4.0"
+
+    # 尝试多个路径
+    candidates = []
+
+    # 标准用户 addons 目录
+    user_dir = Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender" / version / "scripts" / "addons"
+    candidates.append(user_dir)
+
+    # 扫描已存在的版本目录（最新优先）
     bf_dir = Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender"
     if bf_dir.exists():
-        for d in sorted(bf_dir.iterdir(), reverse=True):  # 最新版本优先
-            if d.is_dir() and d.name.replace(".", "").isdigit():
-                candidates.insert(0, d / "scripts" / "addons")
+        for d in sorted(bf_dir.iterdir(), reverse=True):
+            if d.is_dir() and re.match(r"\d+\.\d+", d.name):
+                candidates.append(d / "scripts" / "addons")
 
     for candidate in candidates:
         if candidate.exists():
             return candidate
 
-    # 用检测到的版本创建目录
-    best = candidates[0]
-    best.mkdir(parents=True, exist_ok=True)
-    return best
+    # 用检测到的版本创建
+    user_dir.mkdir(parents=True, exist_ok=True)
+    return user_dir
 
 
 class AddonInstallParams(BaseModel):
