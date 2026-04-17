@@ -4,7 +4,6 @@ from typing import List, Literal
 from pydantic import BaseModel, Field
 
 from camera_presets import CameraPreset, get_camera_angles
-from config import CACHE_DIR, OUTPUT_DIR
 
 
 class SceneParams(BaseModel):
@@ -26,8 +25,18 @@ _STYLE_CONFIGS = {
 }
 
 
-def generate_scene_script(params: SceneParams) -> str:
-    """生成场景脚本 - 程序化场景建模"""
+def generate_scene_script(
+    params: SceneParams,
+    output_dir: str = "D:/BlenderAgent/outputs",
+    cache_dir: str = "D:/BlenderAgent/cache",
+) -> str:
+    """生成场景脚本 - 程序化场景建模
+
+    Args:
+        params: 场景参数
+        output_dir: Windows 端渲染输出目录
+        cache_dir: Windows 端缓存目录
+    """
 
     angles_config = get_camera_angles(params.camera_preset)
     angles_json = json.dumps(angles_config)
@@ -127,12 +136,12 @@ def generate_scene_script(params: SceneParams) -> str:
         "for i, cfg in enumerate(angles):",
         "    camera.location = cfg['location']",
         "    camera.rotation_euler = cfg['rotation']",
-        f'    filepath = r"{OUTPUT_DIR}/{params.preset_name}_scene_" + str(i) + ".png"',
+        f'    filepath = r"{output_dir}/{params.preset_name}_scene_" + str(i) + ".png"',
         "    scene.render.filepath = filepath",
         "    bpy.ops.render.render(write_still=True)",
         "    output_paths.append(filepath)",
         "",
-        f'bpy.ops.wm.save_as_mainfile(filepath=r"{CACHE_DIR}/{params.preset_name}_scene.blend")',
+        f'bpy.ops.wm.save_as_mainfile(filepath=r"{cache_dir}/{params.preset_name}_scene.blend")',
         "print(json.dumps(output_paths))",
     ]
     return "\n".join(script_lines)

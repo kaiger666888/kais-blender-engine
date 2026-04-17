@@ -4,7 +4,6 @@ from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
 
 from camera_presets import CameraPreset, get_camera_angles
-from config import CACHE_DIR, OUTPUT_DIR
 
 
 # ── 体型预设 ──────────────────────────────────────────────
@@ -100,8 +99,18 @@ def _build_macro_details(params: CharacterParams) -> dict:
     }
 
 
-def generate_character_script(params: CharacterParams) -> str:
-    """生成 Blender Python 脚本 - 使用 MPFB2 HumanService API"""
+def generate_character_script(
+    params: CharacterParams,
+    output_dir: str = "D:/BlenderAgent/outputs",
+    cache_dir: str = "D:/BlenderAgent/cache",
+) -> str:
+    """生成 Blender Python 脚本 - 使用 MPFB2 HumanService API
+
+    Args:
+        params: 角色参数
+        output_dir: Windows 端渲染输出目录
+        cache_dir: Windows 端缓存目录（blend 文件保存位置）
+    """
 
     angles_config = get_camera_angles(params.camera_preset, params.custom_angles)
     angles_json = json.dumps(angles_config)
@@ -291,14 +300,14 @@ def generate_character_script(params: CharacterParams) -> str:
         "    camera.location = cfg['location']",
         "    camera.rotation_euler = cfg['rotation']",
         "    angle_name = cfg.get('name', 'angle_' + str(i))",
-        f'    filepath = r"{OUTPUT_DIR}/{params.preset_name}_" + angle_name + ".png"',
+        f'    filepath = r"{output_dir}/{params.preset_name}_" + angle_name + ".png"',
         "    scene.render.filepath = filepath",
         "    bpy.ops.render.render(write_still=True)",
         "    output_paths.append(filepath)",
         '    print("Rendered: " + filepath)',
         "",
         "# 保存 blend",
-        f'bpy.ops.wm.save_as_mainfile(filepath=r"{CACHE_DIR}/{params.preset_name}.blend")',
+        f'bpy.ops.wm.save_as_mainfile(filepath=r"{cache_dir}/{params.preset_name}.blend")',
         "",
         'print("CHARACTER_GENERATION_COMPLETE")',
         "print(json.dumps(output_paths))",
