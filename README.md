@@ -329,6 +329,106 @@ skill_generate_character({...})
 传给下游（Seedance 等）
 ```
 
+---
+
+## 骨骼绑定与姿态系统
+
+### 工作流
+
+```
+1. generate_rigged_character_script()  →  生成带骨骼的角色包 .blend
+2. generate_pose_script()              →  加载角色包 + 设置姿态 + 渲染输出
+```
+
+### 骨骼绑定 — 生成角色包
+
+调用 `generate_rigged_character_script()` 生成 Blender 脚本，通过 `/run/script` 发送到 Windows 执行：
+
+```python
+from client.generators.pose import generate_rigged_character_script
+from client.generators.character import _build_macro_details, CharacterParams
+
+params = CharacterParams(preset_name="hero_001", gender="male", height=1.8)
+script = generate_rigged_character_script(
+    preset_name="hero_001",
+    macro_details=_build_macro_details(params),
+    rig_file="rig.default.json",      # 或 rig.mixamo.json
+    weights_file="weights.default.json",
+)
+# POST script 到 192.168.71.38:8080/run/script
+# 输出: D:/BlenderAgent/cache/hero_001.blend
+```
+
+### 姿态渲染
+
+```python
+from client.generators.pose import generate_pose_script
+from client.pose_presets import POSE_PRESETS
+
+# 使用预设姿态
+script = generate_pose_script(
+    preset_name="hero_001",
+    bone_rotations=POSE_PRESETS["wave"],
+    camera_preset="front",
+    resolution=1024,
+)
+# POST 到 Windows → D:/BlenderAgent/outputs/hero_001_front.png
+
+# 自定义骨骼旋转
+script = generate_pose_script(
+    preset_name="hero_001",
+    bone_rotations={
+        "upperarm01.L": (1.5, 0, 0),
+        "lowerarm01.L": (2.0, 0, 0),
+    },
+)
+```
+
+### 姿态预设（POSE_PRESETS）
+
+| 预设名 | 说明 |
+|--------|------|
+| `t-pose` | T 姿势（默认骨骼姿势） |
+| `standing` | 自然站立 |
+| `arms_up` | 双手举过头顶 |
+| `wave` | 挥手 |
+| `walk_left` | 左腿迈步 |
+| `walk_right` | 右腿迈步 |
+| `sit` | 坐姿 |
+| `run` | 跑步 |
+| `fighting_stance` | 格斗站姿 |
+| `hands_on_hips` | 双手叉腰 |
+| `crossed_arms` | 抱臂 |
+| `sitting_relaxed` | 放松坐姿 |
+
+### MPFB2 主要骨骼名（163 bones）
+
+```
+root
+spine01, spine02, spine03, spine04, spine05
+neck01, neck02, neck03
+head, jaw, eye.L, eye.R
+
+clavicle.L, shoulder01.L, upperarm01.L, upperarm02.L,
+lowerarm01.L, lowerarm02.L, wrist.L
+finger1-1.L ~ finger5-3.L, metacarpal1-4.L
+
+clavicle.R, shoulder01.R, upperarm01.R, upperarm02.R,
+lowerarm01.R, lowerarm02.R, wrist.R
+finger1-1.R ~ finger5-3.R, metacarpal1-4.R
+
+upperleg01.L, upperleg02.L, lowerleg01.L, lowerleg02.L,
+foot.L, toe1-5.L
+upperleg01.R, upperleg02.R, lowerleg01.R, lowerleg02.R,
+foot.R, toe1-5.R
+
+tongue00.L ~ tongue07.L
+```
+
+旋转格式: `(rx, ry, rz)` 弧度，Blender 默认 XYZ Euler 顺序。
+
+---
+
 ## 常见问题
 
 **Q: Blender 路径在哪修改？**
