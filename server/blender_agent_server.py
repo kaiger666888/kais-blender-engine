@@ -1,3 +1,4 @@
+import json
 import re
 import shutil
 import subprocess
@@ -9,11 +10,15 @@ from pathlib import Path
 from typing import Dict, Optional
 
 import requests as http_requests
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-from config import BLENDER_EXE, CACHE_DIR, OUTPUT_DIR, RENDER_TIMEOUT
+from config import (
+    ANIMATION_INDEX_PATH, ANIMATIONS_DIR, ASSET_INDEX_PATH,
+    BLENDER_EXE, CACHE_DIR, CHARACTERS_DIR, MOTIONS_DIR,
+    MPFB_DATA_DIR, OUTPUT_DIR, RENDER_TIMEOUT,
+)
 
 app = FastAPI(title="Blender Execution Engine")
 
@@ -380,6 +385,144 @@ async def enable_addon(params: AddonEnableParams):
     finally:
         if script_file.exists():
             script_file.unlink()
+
+
+# ── 素材索引 ──────────────────────────────────────────────
+
+_asset_index_cache: Optional[dict] = None
+
+
+def _load_asset_index() -> dict:
+    """加载素材索引（带缓存）"""
+    global _asset_index_cache
+    if _asset_index_cache is not None:
+        return _asset_index_cache
+    if not ASSET_INDEX_PATH.exists():
+        raise HTTPException(503, "素材索引未生成，请先调用 GET /assets/rebuild")
+    with open(ASSET_INDEX_PATH, "r", encoding="utf-8") as f:
+        _asset_index_cache = json.load(f)
+    return _asset_index_cache
+
+
+@app.get("/assets")
+def query_assets(
+    type: Optional[str] = Query(None, description="素材类型: skins, hair, clothes, eyes, eyebrows, eyelashes, teeth, poses, proxymeshes"),
+    tags: Optional[str] = Query(None, description="逗号分隔标签过滤，如: young,female"),
+    q: Optional[str] = Query(None, description="在 name/description 中搜索"),
+):
+    """查询可用素材"""
+    index = _load_asset_index()
+
+    # 确定要搜索的类型列表
+    all_types = list(index.get("assets", {}).keys())
+    if type:
+        requested = [t.strip() for t in type.split(",")]
+        search_types = [t for t in requested if t in all_types]
+        if not search_types:
+            raise HTTPException(400, f"未知类型: {type}，可用: {', '.join(all_types)}")
+    else:
+        search_types = all_types
+
+    # 收集候选素材
+    results = []
+    for t in search_types:
+        for asset in index["assets"].get(t, []):
+            results.append({**asset, "type": t})
+
+    # 标签过滤
+    if tags:
+        required = set(t.strip().lower() for t in tags.split(","))
+        results = [a for a in results if required.issubset(set(t.lower() for t in a.get("tags", [])))]
+
+    # 关键词搜索
+    if q:
+        ql = q.lower()
+        results = [
+            a for a in results
+            if ql in a["name"].lower() or ql in a.get("description", "").lower()
+        ]
+
+    return {"total": len(results), "assets": results}
+
+
+@app.get("/assets/stats")
+def asset_stats():
+    """素材索引统计信息"""
+    index = _load_asset_index()
+    return {
+        "generated_at": index.get("generated_at"),
+        "total_assets": index.get("total_assets", 0),
+        "stats": index.get("stats", {}),
+    }
+
+
+@app.get("/assets/rebuild")
+def rebuild_asset_index():
+    """重新生成素材索引"""
+    import subprocess as sp
+    script = Path(__file__).parent / "build_asset_index.py"
+    if not script.exists():
+        raise HTTPException(500, f"索引生成器不存在: {script}")
+
+    result = sp.run(
+        ["python", str(script)],
+        capture_output=True, text=True, timeout=30,
+    )
+    if result.returncode != 0:
+        raise HTTPException(500, f"索引生成失败: {result.stderr[:500]}")
+
+    # 清除缓存以强制重新加载
+    global _asset_index_cache
+    _asset_index_cache = None
+
+    index = _load_asset_index()
+    return {
+        "status": "rebuilt",
+        "total_assets": index.get("total_assets", 0),
+        "stats": index.get("stats", {}),
+    }
+
+
+# ── 动画资源管理 ──────────────────────────────────────────
+
+_animation_index_cache: Optional[dict] = None
+
+
+def _load_animation_index() -> dict:
+    """加载动画索引（带缓存）"""
+    global _animation_index_cache
+    if _animation_index_cache is not None:
+        return _animation_index_cache
+    if not ANIMATION_INDEX_PATH.exists():
+        raise HTTPException(503, "动画索引未生成，请先调用 GET /animations/rebuild")
+    with open(ANIMATION_INDEX_PATH, "r", encoding="utf-8") as f:
+        _animation_index_cache = json.load(f)
+    return _animation_index_cache
+
+
+@app.get("/animations")
+def list_animations():
+    """列出可用的 Mixamo 角色和动画"""
+    index = _load_animation_index()
+    return {
+        "characters": index.get("characters", []),
+        "motions": index.get("motions", []),
+        "stats": index.get("stats", {}),
+    }
+
+
+@app.get("/animations/rebuild")
+def rebuild_animation_index():
+    """重新扫描动画目录并生成索引"""
+    global _animation_index_cache
+    _animation_index_cache = None
+
+    from build_animation_index import build_index
+    index = build_index()
+    return {
+        "status": "rebuilt",
+        "stats": index.get("stats", {}),
+    }
 
 
 if __name__ == "__main__":

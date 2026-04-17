@@ -1,0 +1,105 @@
+# Mixamo 批量下载配置
+# ==========================================
+#
+# 动画名必须与 Mixamo 网站上的名称一致（模糊匹配）
+# 也可直接指定 id（在 --search 结果中看到的编号）
+#
+# 字段说明:
+#   name:       动画名称（必填，与 Mixamo 一致）
+#   id:         动画 ID（可选，指定后跳过搜索直接下载）
+#   in_place:   是否原地动画（默认 true）
+#   with_skin:  是否包含皮肤（默认 false，即 Without Skin）
+#   suffix:     文件名后缀（可选）
+
+# ---- 全局设置 ----
+output_dir: ../mixamo_library
+format: fbx7_2019       # FBX 2019 格式，Blender 兼容性最好
+default_in_place: true   # 优先下载 In-Place 版本
+default_with_skin: true  # 必须带 Skin，否则只有骨骼无网格，渲染不可见
+fps: 30
+delay_between_downloads: 3  # 每次下载间隔（秒），避免限速
+download_tpose: true        # 下载角色 T-Pose
+
+# ---- 动画列表 ----
+animations:
+
+  # ====== 基础运动 ======
+  locomotion:
+    - name: "Walking"
+      in_place: true
+    - name: "Walking Backward"
+      in_place: true
+    - name: "Running"
+      in_place: true
+    - name: "Jogging"
+      in_place: true
+    - name: "Sneaking"
+      in_place: true
+    - name: "Walking Turn"
+      in_place: true
+    - name: "Idle"
+    - name: "Breathing Idle"          # 修正: Mixamo 上叫 Breathing Idle
+      id: "c9c6d0d5-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Standing To Crouch"
+    - name: "Crouching"
+    - name: "Crouch To Standing"
+    - name: "Standing Up"
+    - name: "Sitting To Standing"
+    - name: "Sitting Idle"
+
+  # ====== 对话/社交 ======
+  interactions:
+    - name: "Talking"
+    - name: "Asking A Question With Two Hands"  # 修正: 替代 Talking Gesture
+      id: "c9c6fd7b-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Waving"
+    - name: "Shaking Hands"
+    - name: "Arguing"
+    - name: "Agreeing"
+    - name: "Nodding"
+    - name: "Shaking Head No"
+
+  # ====== 情绪/表情 ======
+  emotions:
+    - name: "Happy Idle"
+    - name: "Sad Idle"
+    - name: "Angry"
+    - name: "Scared"
+    - name: "Surprised"
+    - name: "Thinking"
+    - name: "Laughing"
+    - name: "Crying"
+
+  # ====== 战斗/动作 ======
+  combat:
+    - name: "Male Fight Idle Boxing Stance"    # 修正: Mixamo 上的实际名
+      id: "c9c63ce7-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Punching"
+    - name: "Kick"
+    - name: "Blocking"
+    - name: "Getting Hit"
+    - name: "Dying"
+    - name: "Sword And Shield Slash"
+
+  # ====== 日常动作 ======
+  daily:
+    - name: "Picking Up"
+    - name: "Throwing"
+    - name: "Drinking"
+    - name: "Looking Around"
+    - name: "Clap While Standing"              # 修正: Mixamo 上的实际名
+      id: "c9c60ef2-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Pushing"
+    - name: "Pulling"
+
+  # ====== 特殊/表演 ======
+  performance:
+    - name: "Dancing"
+    - name: "Dancing The Twerk"                # 修正: Mixamo 上的实际名
+      id: "c9cef4a7-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Salsa Dancing"
+    - name: "Breakdance Arch Freeze Var 4"     # 修正: 替代 Breakdancing
+      id: "c9cc3970-b96c-11e4-a802-0aaa78deedf9"
+    - name: "Chicken Dance"
+    - name: "Victory"
+    - name: "Cheering"

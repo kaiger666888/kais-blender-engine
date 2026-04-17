@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.playwright-mcp/
+
+# Mixamo FBX binary assets (stored in D:/BlenderAgent/animations/)
+mixamo_library/
+mixamo_library_full/
+
+# Generated indexes (rebuild via API)
+server/asset_index.json

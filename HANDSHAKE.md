@@ -9,11 +9,15 @@
 Linux (Client)                         Windows (Server)
 ┌──────────────────┐    HTTP/JSON     ┌─────────────────────┐
 │ 脚本生成逻辑      │ ──────────────→ │ /run/script         │
-│ (character/scene) │                  │   ↓                 │
-│                  │                  │ blender.exe -b      │
+│ (character/scene  │                  │   ↓                 │
+│  /animation)     │                  │ blender.exe -b      │
 │                  │ ←──────────────  │   ↓                 │
 │ 下载渲染结果      │    /outputs/     │ 渲染完成            │
 └──────────────────┘                  └─────────────────────┘
+
+Mixamo FBX 文件通过共享目录放入:
+  D:\BlenderAgent\animations\characters\  — 角色 FBX
+  D:\BlenderAgent\animations\motions\     — 动画 FBX
 ```
 
 ## 服务端信息
@@ -24,6 +28,7 @@ Linux (Client)                         Windows (Server)
 | 引擎 | Blender 5.1.1 Cycles (GPU: RTX 3060 Ti) |
 | 已装插件 | mpfb (MPFB2 人体建模), MB-Lab |
 | 输出目录 | `D:\BlenderAgent\outputs` |
+| 动画目录 | `D:\BlenderAgent\animations\characters` + `motions` |
 | 超时 | 默认 600s，可自定义 |
 
 ---
@@ -202,9 +207,97 @@ Linux (Client)                         Windows (Server)
 
 ---
 
+### 10. `GET /animations`
+
+列出可用的 Mixamo 角色和动画文件。
+
+**Response:**
+```json
+{
+  "characters": [
+    {"name": "hero", "filename": "hero.fbx", "path": "D:\\BlenderAgent\\animations\\characters\\hero.fbx", "size": 1234567, "modified": 1713326400.0}
+  ],
+  "motions": [
+    {"name": "walk", "filename": "walk.fbx", "path": "D:\\BlenderAgent\\animations\\motions\\walk.fbx", "size": 234567, "modified": 1713326400.0},
+    {"name": "run", "filename": "run.fbx", "path": "D:\\BlenderAgent\\animations\\motions\\run.fbx", "size": 345678, "modified": 1713326400.0}
+  ],
+  "stats": {
+    "total_characters": 1,
+    "total_motions": 2
+  }
+}
+```
+
+---
+
+### 11. `GET /animations/rebuild`
+
+重新扫描 `animations/` 目录并生成索引。新放入 FBX 文件后需调用此端点。
+
+**Response:**
+```json
+{
+  "status": "rebuilt",
+  "stats": {
+    "total_characters": 1,
+    "total_motions": 2
+  }
+}
+```
+
+---
+
 ## 典型调用流程
 
-### 角色生成（8 角度参考图）
+### Mixamo 动画渲染（角色 × 多动画）
+
+```python
+import requests
+
+SERVER = "http://192.168.1.100:8080"
+
+# 1. 查询可用动画资源
+anims = requests.get(f"{SERVER}/animations").json()
+print(f"角色: {anims['stats']['total_characters']} 个")
+print(f"动画: {anims['stats']['total_motions']} 个")
+
+# 2. 生成动画渲染脚本
+from generators.animation import generate_animation_script, AnimationParams
+
+script = generate_animation_script(
+    AnimationParams(
+        preset_name="hero_showreel",
+        character="hero.fbx",
+        motions=["walk.fbx", "run.fbx", "idle.fbx"],
+        output_format="both",          # PNG 帧序列 + MP4 视频
+        resolution=1024,
+        samples=256,
+        fps=24,
+        lighting_preset="studio",
+        camera_preset="three_quarter",
+    ),
+    output_dir="D:/BlenderAgent/outputs",
+    characters_dir="D:/BlenderAgent/animations/characters",
+    motions_dir="D:/BlenderAgent/animations/motions",
+)
+
+# 3. 异步提交（动画渲染可能较长）
+job = requests.post(f"{SERVER}/run/async", json={"script": script, "timeout": 1800}).json()
+job_id = job["job_id"]
+
+# 4. 轮询结果
+import time
+while True:
+    status = requests.get(f"{SERVER}/jobs/{job_id}").json()
+    if status["status"] in ("completed", "timeout", "error"):
+        break
+    time.sleep(10)
+
+# 5. 获取输出
+files = requests.get(f"{SERVER}/outputs?prefix=hero_showreel_").json()
+```
+
+### 角色生成（MPFB2 静态参考图）
 
 ```python
 import requests
@@ -275,6 +368,8 @@ Linux 端生成的 Blender Python 脚本需注意：
 - [x] 11 种相机预设 + 4 种灯光预设
 - [x] 同步 + 异步任务执行
 - [x] 文件管理（列表/下载/删除）
+- [x] Mixamo FBX 动画渲染（帧序列 + 视频）
+- [x] 动画资源索引管理
 
 ### Linux 端待开发
 - [ ] 集成 OpenClaw 调用
@@ -296,3 +391,4 @@ Linux 端生成的 Blender Python 脚本需注意：
 | 日期 | 变更 |
 |------|------|
 | 2026-04-17 | 初始版本：精简为执行引擎，新增 capabilities/async/jobs/outputs 端点 |
+| 2026-04-17 | 新增 Mixamo 动画渲染：/animations 端点、animation.py 生成器、帧序列+视频输出 |

@@ -1,0 +1,473 @@
+{
+  "generated_at": "2026-04-17T21:54:39.258337",
+  "characters": [
+    {
+      "name": "x_bot_tpose",
+      "filename": "x_bot_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\x_bot_tpose.fbx",
+      "size": 1750032,
+      "modified": 1776433628.7394993
+    }
+  ],
+  "motions": [
+    {
+      "name": "basic_rock_beat_inplace_withskin",
+      "filename": "basic_rock_beat_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\basic_rock_beat_inplace_withskin.fbx",
+      "size": 1540096,
+      "modified": 1776433639.764061
+    },
+    {
+      "name": "bboy_hip_hop_variation_one_inplace_withskin",
+      "filename": "bboy_hip_hop_variation_one_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\bboy_hip_hop_variation_one_inplace_withskin.fbx",
+      "size": 1971008,
+      "modified": 1776433639.794026
+    },
+    {
+      "name": "bboy_uprock_start_inplace_withskin",
+      "filename": "bboy_uprock_start_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\bboy_uprock_start_inplace_withskin.fbx",
+      "size": 1939904,
+      "modified": 1776433639.823186
+    },
+    {
+      "name": "boxing_leading_hand_jab_inplace_withskin",
+      "filename": "boxing_leading_hand_jab_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\boxing_leading_hand_jab_inplace_withskin.fbx",
+      "size": 1876176,
+      "modified": 1776433639.852013
+    },
+    {
+      "name": "capoeira_idle_inplace_withskin",
+      "filename": "capoeira_idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\capoeira_idle_inplace_withskin.fbx",
+      "size": 2125120,
+      "modified": 1776433639.876045
+    },
+    {
+      "name": "changing_direction_in_stand_cover_inplace_withskin",
+      "filename": "changing_direction_in_stand_cover_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\changing_direction_in_stand_cover_inplace_withskin.fbx",
+      "size": 1838384,
+      "modified": 1776433639.8978794
+    },
+    {
+      "name": "crouch_cover_to_standing_ready_inplace_withskin",
+      "filename": "crouch_cover_to_standing_ready_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\crouch_cover_to_standing_ready_inplace_withskin.fbx",
+      "size": 1889680,
+      "modified": 1776433639.9217572
+    },
+    {
+      "name": "dodge_backward_with_bow_inplace_withskin",
+      "filename": "dodge_backward_with_bow_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\dodge_backward_with_bow_inplace_withskin.fbx",
+      "size": 1894544,
+      "modified": 1776433639.9440563
+    },
+    {
+      "name": "dodging_to_the_right_in_place_inplace_withskin",
+      "filename": "dodging_to_the_right_in_place_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\dodging_to_the_right_in_place_inplace_withskin.fbx",
+      "size": 1853424,
+      "modified": 1776433639.9715843
+    },
+    {
+      "name": "dying_with_front_impact_to_the_head_and_fall_on_one_knee_inplace_withskin",
+      "filename": "dying_with_front_impact_to_the_head_and_fall_on_one_knee_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\dying_with_front_impact_to_the_head_and_fall_on_one_knee_inplace_withskin.fbx",
+      "size": 2036464,
+      "modified": 1776433639.9932113
+    },
+    {
+      "name": "ecstatic_jumping_with_both_legs_and_arms_inplace_withskin",
+      "filename": "ecstatic_jumping_with_both_legs_and_arms_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\ecstatic_jumping_with_both_legs_and_arms_inplace_withskin.fbx",
+      "size": 1943424,
+      "modified": 1776433640.0155146
+    },
+    {
+      "name": "falling_over_a_rope_down_to_the_floor_inplace_withskin",
+      "filename": "falling_over_a_rope_down_to_the_floor_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\falling_over_a_rope_down_to_the_floor_inplace_withskin.fbx",
+      "size": 2571056,
+      "modified": 1776433640.0420833
+    },
+    {
+      "name": "female_hip_hop_slide_step_dancing_inplace_withskin",
+      "filename": "female_hip_hop_slide_step_dancing_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\female_hip_hop_slide_step_dancing_inplace_withskin.fbx",
+      "size": 2024000,
+      "modified": 1776433640.0627093
+    },
+    {
+      "name": "female_rumba_dancing_-_loop_inplace_withskin",
+      "filename": "female_rumba_dancing_-_loop_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\female_rumba_dancing_-_loop_inplace_withskin.fbx",
+      "size": 1968368,
+      "modified": 1776433640.0843012
+    },
+    {
+      "name": "female_standing_while_using_a_fax_machine_on_a_table_inplace_withskin",
+      "filename": "female_standing_while_using_a_fax_machine_on_a_table_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\female_standing_while_using_a_fax_machine_on_a_table_inplace_withskin.fbx",
+      "size": 2961504,
+      "modified": 1776433640.1077266
+    },
+    {
+      "name": "female_walk_forward_in_a_tight_turn_to_the_right_inplace_withskin",
+      "filename": "female_walk_forward_in_a_tight_turn_to_the_right_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\female_walk_forward_in_a_tight_turn_to_the_right_inplace_withskin.fbx",
+      "size": 2147792,
+      "modified": 1776433640.129014
+    },
+    {
+      "name": "firing_while_walking_with_rifle_inplace_withskin",
+      "filename": "firing_while_walking_with_rifle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\firing_while_walking_with_rifle_inplace_withskin.fbx",
+      "size": 1883376,
+      "modified": 1776433640.15546
+    },
+    {
+      "name": "floating_bent_forwards_inplace_withskin",
+      "filename": "floating_bent_forwards_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\floating_bent_forwards_inplace_withskin.fbx",
+      "size": 1741504,
+      "modified": 1776433640.1767654
+    },
+    {
+      "name": "floating_in_air_flailing_arms_inplace_withskin",
+      "filename": "floating_in_air_flailing_arms_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\floating_in_air_flailing_arms_inplace_withskin.fbx",
+      "size": 2136240,
+      "modified": 1776433640.2041452
+    },
+    {
+      "name": "goalkeeper_scooping_the_ball_from_a_roll_inplace_withskin",
+      "filename": "goalkeeper_scooping_the_ball_from_a_roll_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\goalkeeper_scooping_the_ball_from_a_roll_inplace_withskin.fbx",
+      "size": 2030624,
+      "modified": 1776433640.2254221
+    },
+    {
+      "name": "happy_idle_inplace_withskin",
+      "filename": "happy_idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\happy_idle_inplace_withskin.fbx",
+      "size": 1962576,
+      "modified": 1776433639.4800024
+    },
+    {
+      "name": "house_dance_variation_3_inplace_withskin",
+      "filename": "house_dance_variation_3_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\house_dance_variation_3_inplace_withskin.fbx",
+      "size": 3422528,
+      "modified": 1776433640.251569
+    },
+    {
+      "name": "idle_inplace_withskin",
+      "filename": "idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\idle_inplace_withskin.fbx",
+      "size": 1856736,
+      "modified": 1776433639.5311935
+    },
+    {
+      "name": "juggling_header_of_a_soccer_ball_inplace_withskin",
+      "filename": "juggling_header_of_a_soccer_ball_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\juggling_header_of_a_soccer_ball_inplace_withskin.fbx",
+      "size": 1943024,
+      "modified": 1776433640.2741466
+    },
+    {
+      "name": "jump_down_with_one_foot_while_holding_rifle_inplace_withskin",
+      "filename": "jump_down_with_one_foot_while_holding_rifle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\jump_down_with_one_foot_while_holding_rifle_inplace_withskin.fbx",
+      "size": 1965280,
+      "modified": 1776433640.2978761
+    },
+    {
+      "name": "kissing_a_shorter_person_for_a_long_period_inplace_withskin",
+      "filename": "kissing_a_shorter_person_for_a_long_period_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\kissing_a_shorter_person_for_a_long_period_inplace_withskin.fbx",
+      "size": 2364208,
+      "modified": 1776433640.3234417
+    },
+    {
+      "name": "kneeling_in_prayer_to_standing_up_inplace_withskin",
+      "filename": "kneeling_in_prayer_to_standing_up_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\kneeling_in_prayer_to_standing_up_inplace_withskin.fbx",
+      "size": 2329728,
+      "modified": 1776433640.3471491
+    },
+    {
+      "name": "kneeling_to_pointing_inplace_withskin",
+      "filename": "kneeling_to_pointing_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\kneeling_to_pointing_inplace_withskin.fbx",
+      "size": 2135920,
+      "modified": 1776433640.374069
+    },
+    {
+      "name": "left_crouched_strafe_walk_to_stop_inplace_withskin",
+      "filename": "left_crouched_strafe_walk_to_stop_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\left_crouched_strafe_walk_to_stop_inplace_withskin.fbx",
+      "size": 1838384,
+      "modified": 1776433640.4018881
+    },
+    {
+      "name": "lighting_torch_with_right_hand_inplace_withskin",
+      "filename": "lighting_torch_with_right_hand_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\lighting_torch_with_right_hand_inplace_withskin.fbx",
+      "size": 2115936,
+      "modified": 1776433640.4233608
+    },
+    {
+      "name": "looking_down_then_pointing_forward_inplace_withskin",
+      "filename": "looking_down_then_pointing_forward_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\looking_down_then_pointing_forward_inplace_withskin.fbx",
+      "size": 2159776,
+      "modified": 1776433640.4486332
+    },
+    {
+      "name": "male_cape_jump_down_inplace_withskin",
+      "filename": "male_cape_jump_down_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\male_cape_jump_down_inplace_withskin.fbx",
+      "size": 1966176,
+      "modified": 1776433640.46892
+    },
+    {
+      "name": "male_crouch_to_stand_inplace_withskin",
+      "filename": "male_crouch_to_stand_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\male_crouch_to_stand_inplace_withskin.fbx",
+      "size": 1943680,
+      "modified": 1776433640.4877172
+    },
+    {
+      "name": "male_half_frog_style_jump_down_inplace_withskin",
+      "filename": "male_half_frog_style_jump_down_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\male_half_frog_style_jump_down_inplace_withskin.fbx",
+      "size": 2062080,
+      "modified": 1776433640.5081453
+    },
+    {
+      "name": "male_reaction_hit_on_the_left_side_inplace_withskin",
+      "filename": "male_reaction_hit_on_the_left_side_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\male_reaction_hit_on_the_left_side_inplace_withskin.fbx",
+      "size": 1883376,
+      "modified": 1776433640.527945
+    },
+    {
+      "name": "mutant_45_degree_right_turn_game_blend_inplace_withskin",
+      "filename": "mutant_45_degree_right_turn_game_blend_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\mutant_45_degree_right_turn_game_blend_inplace_withskin.fbx",
+      "size": 1886976,
+      "modified": 1776433640.548681
+    },
+    {
+      "name": "nervously_looking_around_left_to_right_-_loop_inplace_withskin",
+      "filename": "nervously_looking_around_left_to_right_-_loop_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\nervously_looking_around_left_to_right_-_loop_inplace_withskin.fbx",
+      "size": 2242512,
+      "modified": 1776433640.5742557
+    },
+    {
+      "name": "old_man_standing_idle_inplace_withskin",
+      "filename": "old_man_standing_idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\old_man_standing_idle_inplace_withskin.fbx",
+      "size": 2402592,
+      "modified": 1776433640.5943286
+    },
+    {
+      "name": "on_right_foot_left_leg_raised_inplace_withskin",
+      "filename": "on_right_foot_left_leg_raised_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\on_right_foot_left_leg_raised_inplace_withskin.fbx",
+      "size": 1741712,
+      "modified": 1776433640.6149435
+    },
+    {
+      "name": "petting_an_animal_inplace_withskin",
+      "filename": "petting_an_animal_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\petting_an_animal_inplace_withskin.fbx",
+      "size": 2912624,
+      "modified": 1776433640.6389854
+    },
+    {
+      "name": "reaction_to_getting_clipped_while_walking_unaware_inplace_withskin",
+      "filename": "reaction_to_getting_clipped_while_walking_unaware_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\reaction_to_getting_clipped_while_walking_unaware_inplace_withskin.fbx",
+      "size": 2032112,
+      "modified": 1776433640.6610808
+    },
+    {
+      "name": "riding_passenger_attempts_to_pull_driver_or_pilot_out_of_seat_inplace_withskin",
+      "filename": "riding_passenger_attempts_to_pull_driver_or_pilot_out_of_seat_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\riding_passenger_attempts_to_pull_driver_or_pilot_out_of_seat_inplace_withskin.fbx",
+      "size": 2487136,
+      "modified": 1776433640.6814659
+    },
+    {
+      "name": "robot_hip_hop_dance_variation_one_inplace_withskin",
+      "filename": "robot_hip_hop_dance_variation_one_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\robot_hip_hop_dance_variation_one_inplace_withskin.fbx",
+      "size": 3002592,
+      "modified": 1776433640.7057383
+    },
+    {
+      "name": "run_to_start_climbing_inplace_withskin",
+      "filename": "run_to_start_climbing_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\run_to_start_climbing_inplace_withskin.fbx",
+      "size": 2129072,
+      "modified": 1776433640.7304888
+    },
+    {
+      "name": "showing_frustration_after_a_loss_inplace_withskin",
+      "filename": "showing_frustration_after_a_loss_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\showing_frustration_after_a_loss_inplace_withskin.fbx",
+      "size": 2330144,
+      "modified": 1776433640.7497265
+    },
+    {
+      "name": "silly_dancing_the_cabbage_patch_inplace_withskin",
+      "filename": "silly_dancing_the_cabbage_patch_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\silly_dancing_the_cabbage_patch_inplace_withskin.fbx",
+      "size": 2046272,
+      "modified": 1776433640.7707405
+    },
+    {
+      "name": "sitting_on_a_toilet_inplace_withskin",
+      "filename": "sitting_on_a_toilet_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\sitting_on_a_toilet_inplace_withskin.fbx",
+      "size": 2267504,
+      "modified": 1776433640.7962925
+    },
+    {
+      "name": "sitting_unethusiastic_clap_inplace_withskin",
+      "filename": "sitting_unethusiastic_clap_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\sitting_unethusiastic_clap_inplace_withskin.fbx",
+      "size": 2235424,
+      "modified": 1776433640.8157885
+    },
+    {
+      "name": "sitting_while_laughing_inplace_withskin",
+      "filename": "sitting_while_laughing_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\sitting_while_laughing_inplace_withskin.fbx",
+      "size": 2451200,
+      "modified": 1776433640.8357718
+    },
+    {
+      "name": "standing_angrily_inplace_withskin",
+      "filename": "standing_angrily_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\standing_angrily_inplace_withskin.fbx",
+      "size": 3162112,
+      "modified": 1776433640.855527
+    },
+    {
+      "name": "start_left_upright_strafe_run_inplace_withskin",
+      "filename": "start_left_upright_strafe_run_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\start_left_upright_strafe_run_inplace_withskin.fbx",
+      "size": 1847664,
+      "modified": 1776433640.8795888
+    },
+    {
+      "name": "stretching_arms_by_pushing_the_elbows_inplace_withskin",
+      "filename": "stretching_arms_by_pushing_the_elbows_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\stretching_arms_by_pushing_the_elbows_inplace_withskin.fbx",
+      "size": 2499280,
+      "modified": 1776433640.9038095
+    },
+    {
+      "name": "swimming_underwater_inplace_withskin",
+      "filename": "swimming_underwater_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\swimming_underwater_inplace_withskin.fbx",
+      "size": 2137168,
+      "modified": 1776433640.9276314
+    },
+    {
+      "name": "swing_dance_shim_sham_variation_1_inplace_withskin",
+      "filename": "swing_dance_shim_sham_variation_1_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\swing_dance_shim_sham_variation_1_inplace_withskin.fbx",
+      "size": 3641440,
+      "modified": 1776433640.9527347
+    },
+    {
+      "name": "taking_a_step_backward_with_aiming_rifle_inplace_withskin",
+      "filename": "taking_a_step_backward_with_aiming_rifle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\taking_a_step_backward_with_aiming_rifle_inplace_withskin.fbx",
+      "size": 1884272,
+      "modified": 1776433640.9726934
+    },
+    {
+      "name": "taunting_pointing_at_wrist_inplace_withskin",
+      "filename": "taunting_pointing_at_wrist_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\taunting_pointing_at_wrist_inplace_withskin.fbx",
+      "size": 2057072,
+      "modified": 1776433640.9925413
+    },
+    {
+      "name": "thriller_dance_part_3_inplace_withskin",
+      "filename": "thriller_dance_part_3_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\thriller_dance_part_3_inplace_withskin.fbx",
+      "size": 3880688,
+      "modified": 1776433641.0144775
+    },
+    {
+      "name": "victory_inplace_withskin",
+      "filename": "victory_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\victory_inplace_withskin.fbx",
+      "size": 2458224,
+      "modified": 1776433639.6106787
+    },
+    {
+      "name": "walking_forward_inplace_withskin",
+      "filename": "walking_forward_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\walking_forward_inplace_withskin.fbx",
+      "size": 1890752,
+      "modified": 1776433641.0375237
+    },
+    {
+      "name": "walking_inplace_withskin",
+      "filename": "walking_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\walking_inplace_withskin.fbx",
+      "size": 1869264,
+      "modified": 1776433639.584526
+    },
+    {
+      "name": "walking_strafe_to_the_left_inplace_withskin",
+      "filename": "walking_strafe_to_the_left_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\walking_strafe_to_the_left_inplace_withskin.fbx",
+      "size": 1854576,
+      "modified": 1776433641.0576818
+    },
+    {
+      "name": "waving_inplace_withskin",
+      "filename": "waving_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\waving_inplace_withskin.fbx",
+      "size": 1778400,
+      "modified": 1776433639.5053024
+    },
+    {
+      "name": "zombie_standing_idle_inplace_withskin",
+      "filename": "zombie_standing_idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\zombie_standing_idle_inplace_withskin.fbx",
+      "size": 2016352,
+      "modified": 1776433641.0809934
+    },
+    {
+      "name": "zombie_stumble_to_the_right_and_fall_inplace_withskin",
+      "filename": "zombie_stumble_to_the_right_and_fall_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\zombie_stumble_to_the_right_and_fall_inplace_withskin.fbx",
+      "size": 2055280,
+      "modified": 1776433641.1088574
+    },
+    {
+      "name": "zombie_twitching_idle_inplace_withskin",
+      "filename": "zombie_twitching_idle_inplace_withskin.fbx",
+      "path": "D:\\BlenderAgent\\animations\\motions\\zombie_twitching_idle_inplace_withskin.fbx",
+      "size": 2010048,
+      "modified": 1776433641.1323962
+    }
+  ],
+  "stats": {
+    "total_characters": 1,
+    "total_motions": 65
+  }
+}

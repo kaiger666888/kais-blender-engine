@@ -1,0 +1,25 @@
+# Mixamo 集成验证配置（精简版）
+# 每个分类选 1 个代表动画，覆盖全流程验证
+
+output_dir: ../mixamo_library
+format: fbx7_2019
+default_in_place: true
+default_with_skin: true
+fps: 30
+delay_between_downloads: 3
+download_tpose: true
+
+animations:
+  locomotion:
+    - name: "Idle"
+    - name: "Walking"
+      in_place: true
+
+  interactions:
+    - name: "Waving"
+
+  emotions:
+    - name: "Happy Idle"
+
+  performance:
+    - name: "Victory"
