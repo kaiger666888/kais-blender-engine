@@ -48,12 +48,16 @@ async def generate_character(
             lambda: script_file.unlink() if script_file.exists() else None
         )
 
+        # 检测是否使用了 MPFB2（通过 stderr 日志判断）
+        method = "mpfb2" if "MPFB2" in (result.stderr or "") else "fallback"
+
         return {
             "status": "success",
             "preset_name": params.preset_name,
             "outputs": output_files,
             "blend_file": str(CACHE_DIR / f"{params.preset_name}.blend"),
             "count": len(output_files),
+            "method": method,
         }
 
     except subprocess.TimeoutExpired:
@@ -119,17 +123,38 @@ def health_check():
 def debug_mpfb():
     """测试 MPFB2 是否在 headless 模式下可用"""
     test_script = '''
-import sys
+import sys, os, bpy
 print("=== MPFB2 Debug ===")
 print("Python: " + sys.version)
 
-# 测试 1: 模块导入
+# Blender 5.x 兼容: monkey-patch extension_path_user
+_orig_ext_path_user = getattr(bpy.utils, 'extension_path_user', None)
+if _orig_ext_path_user is not None:
+    def _safe_ext_path_user(pkg, path='', repo=None):
+        try:
+            return _orig_ext_path_user(pkg, path=path, repo=repo)
+        except (ValueError, Exception):
+            fallback = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', 'Blender Foundation', 'mpfb_user')
+            return os.path.join(fallback, path) if path else fallback
+    bpy.utils.extension_path_user = _safe_ext_path_user
+
+# 添加 addons 路径
+for ver in ['5.1', '5.0', '4.0']:
+    mpfb_path = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', 'Blender Foundation', 'Blender', ver, 'scripts', 'addons')
+    if os.path.isdir(os.path.join(mpfb_path, 'mpfb')):
+        sys.path.insert(0, mpfb_path)
+        break
+
+# 测试 1: 通过 addon_utils 启用并导入
 try:
-    from mpfb.services.HumanService import HumanService
-    from mpfb.services.TargetService import TargetService
+    import addon_utils
+    addon_utils.enable('mpfb', default_set=True)
+    from mpfb.services.humanservice import HumanService
     print("PASS: MPFB modules imported")
-except ImportError as e:
+except Exception as e:
     print("FAIL: Cannot import MPFB - " + str(e))
+    import traceback
+    traceback.print_exc()
     sys.exit(1)
 
 # 测试 2: create_human
@@ -362,7 +387,7 @@ except Exception as e:
 @app.post("/addon/enable")
 async def enable_addon(params: AddonEnableParams):
     """启用或禁用已安装的插件"""
-enable_flag = "True" if params.enable else "False"
+    enable_flag = "True" if params.enable else "False"
     script = f'''
 import bpy
 try:

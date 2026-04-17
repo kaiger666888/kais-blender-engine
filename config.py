@@ -15,7 +15,7 @@ HOST = "0.0.0.0"
 PORT = 8080
 
 # 渲染默认超时（秒）
-RENDER_TIMEOUT = 300
+RENDER_TIMEOUT = 600
 
 # 确保目录存在
 for d in [WORK_DIR, CACHE_DIR, OUTPUT_DIR, TEMPLATE_DIR]:
