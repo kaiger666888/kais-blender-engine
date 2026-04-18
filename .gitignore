@@ -8,6 +8,3 @@ mixamo_library_full/
 
 # Session tokens
 scripts/.mixamo_session.json
-
-# Generated indexes (rebuild via API)
-server/asset_index.json

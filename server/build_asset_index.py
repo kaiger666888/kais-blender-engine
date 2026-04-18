@@ -9,7 +9,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from config import ASSET_INDEX_PATH, MPFB_DATA_DIR
+from config import ASSET_INDEX_PATH, MPFB_DATA_DIR, WORK_DIR
 
 # 素材类型 → 数据子目录名 映射
 ASSET_TYPES = {
@@ -184,6 +184,61 @@ def load_pack_metadata() -> dict[str, dict]:
     return merged
 
 
+def _scan_scene_assets() -> dict:
+    """扫描场景资产目录（Poly Haven + ambientCG）"""
+    assets_dir = WORK_DIR / "assets"
+    result = {"polyhaven": {}, "ambientcg": {}}
+
+    # Poly Haven: hdris (flat files) / models (dirs) / textures (dirs)
+    ph_base = assets_dir / "polyhaven"
+    if ph_base.is_dir():
+        for category in ["hdris", "models", "textures"]:
+            cat_dir = ph_base / category
+            if not cat_dir.is_dir():
+                continue
+            items = []
+            for entry in sorted(cat_dir.iterdir()):
+                if entry.is_file():
+                    # Flat files (e.g. .hdr)
+                    items.append({
+                        "name": entry.stem,
+                        "path": str(entry),
+                        "files": 1,
+                        "size": entry.stat().st_size,
+                    })
+                elif entry.is_dir():
+                    files = list(entry.rglob("*"))
+                    items.append({
+                        "name": entry.name,
+                        "path": str(entry),
+                        "files": len([f for f in files if f.is_file()]),
+                        "size": sum(f.stat().st_size for f in files if f.is_file()),
+                    })
+            result["polyhaven"][category] = items
+
+    # ambientCG: textures
+    ac_base = assets_dir / "ambientcg" / "textures"
+    if ac_base.is_dir():
+        items = []
+        for d in sorted(ac_base.iterdir()):
+            if not d.is_dir():
+                continue
+            files = list(d.rglob("*"))
+            items.append({
+                "name": d.name,
+                "path": str(d),
+                "files": len([f for f in files if f.is_file()]),
+                "size": sum(f.stat().st_size for f in files if f.is_file()),
+            })
+        result["ambientcg"]["textures"] = items
+
+    # 统计
+    ph_total = sum(len(items) for items in result["polyhaven"].values())
+    ac_total = sum(len(items) for items in result["ambientcg"].values())
+    result["stats"] = {"polyhaven": ph_total, "ambientcg": ac_total, "total": ph_total + ac_total}
+    return result
+
+
 def build_index() -> dict:
     """构建完整素材索引"""
     pack_meta = load_pack_metadata()
@@ -229,6 +284,7 @@ def build_index() -> dict:
         "total_assets": sum(stats.values()),
         "orphan_pack_entries": orphan_count,
         "assets": assets_by_type,
+        "scene_assets": _scan_scene_assets(),
     }
 
 
