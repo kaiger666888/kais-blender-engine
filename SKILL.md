@@ -99,7 +99,9 @@ print("输出:", result["outputs"])
 
 ### 2. 姿态渲染（Pose Rendering）
 
-设置角色骨骼姿态，渲染静态图。
+设置角色骨骼姿态（FK 旋转 + IK 约束），渲染静态图。
+
+#### FK 模式（直接设骨骼角度）
 
 ```python
 import sys
@@ -122,7 +124,7 @@ result = cli.run_sync(script, timeout=300)
 print("渲染完成:", result["returncode"] == 0)
 ```
 
-**内置姿态预设：**
+**FK 预设：**
 
 | 预设名 | 说明 |
 |--------|------|
@@ -137,6 +139,69 @@ print("渲染完成:", result["returncode"] == 0)
 | `hands_on_hips` | 双手叉腰 |
 | `crossed_arms` | 抱臂 |
 | `sitting_relaxed` | 放松坐姿 |
+
+#### IK 模式（指定手脚目标位置，自动反算骨骼链）
+
+```python
+from generators.pose import generate_pose_script
+from ik_presets import get_ik_preset
+
+# 使用预设
+script = generate_pose_script(
+    preset_name="hero_001",
+    ik_targets=get_ik_preset("reach_forward"),  # 双手伸向前方
+    camera_preset="front",
+)
+
+# 或自定义目标位置
+script = generate_pose_script(
+    preset_name="hero_001",
+    ik_targets={
+        "mixamorig:RightHand": (-0.3, -0.6, 1.5),  # 右手伸向前方
+        "mixamorig:LeftFoot": (0.3, -0.2, 0.0),    # 左脚迈出
+    },
+    camera_preset="three_quarter",
+)
+
+# FK + IK 混合：IK 控制的骨骼会覆盖同链上的 FK 旋转
+script = generate_pose_script(
+    preset_name="hero_001",
+    bone_rotations={"mixamorig:Spine": (-0.1, 0, 0)},
+    ik_targets=get_ik_preset("box_guard"),
+    camera_preset="front",
+)
+```
+
+**IK 预设：**
+
+| 预设名 | 说明 |
+|--------|------|
+| `reach_forward` | 双手伸向前方 |
+| `reach_up` | 双手举高 |
+| `reach_left` / `reach_right` | 单手侧伸 |
+| `reach_down` | 双手向下 |
+| `hands_behind_head` | 双手抱头 |
+| `wave_left` / `wave_right` | 单手挥手 |
+| `box_guard` | 格斗防守姿势 |
+| `point_forward` | 单手指向前方 |
+| `arms_wide` | 双手张开 |
+| `kick_left` / `kick_right` | 踢腿 |
+| `wide_stance` | 宽站姿 |
+| `lunge_left` | 弓步 |
+| `superman` | 飞行姿势（四肢全 IK） |
+| `squat_reach` | 蹲下伸手 |
+| `taunt` | 挑衅姿势 |
+
+**IK 链默认配置：**
+
+| 末端骨骼 | chain_count | 控制范围 |
+|----------|-------------|---------|
+| `mixamorig:LeftHand` | 3 | Hand → ForeArm → Arm |
+| `mixamorig:RightHand` | 3 | Hand → ForeArm → Arm |
+| `mixamorig:LeftFoot` | 3 | Foot → Leg → UpLeg |
+| `mixamorig:RightFoot` | 3 | Foot → Leg → UpLeg |
+
+坐标单位：米（Mixamo 角色约 1.7m 高，Y 前方，Z 上方）。
 
 ### 3. 场景渲染（Scene Rendering）
 
