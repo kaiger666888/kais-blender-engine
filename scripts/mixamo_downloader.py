@@ -763,6 +763,7 @@ def download_all_animations(
     fmt: str = "fbx7_2019",
     in_place: bool = True,
     skin: bool = False,
+    delay: float = 2.0,
 ):
     """下载 Mixamo 上的所有动画。"""
     character_id = session_data["character_id"]
@@ -811,7 +812,7 @@ def download_all_animations(
                 skin=skin,
                 in_place=in_place,
             )
-            time.sleep(2)  # 避免限速
+            time.sleep(delay)  # 避免限速
 
         page += 1
 
@@ -898,6 +899,7 @@ def main():
         download_all_animations(
             sess, session_data, output, proxy,
             fmt=args.format, in_place=args.in_place, skin=args.skin,
+            delay=args.delay,
         )
     else:
         config = load_config(Path(args.config))
