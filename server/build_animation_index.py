@@ -8,11 +8,11 @@ from config import CHARACTERS_DIR, MOTIONS_DIR, ANIMATION_INDEX_PATH
 
 
 def _scan_directory(directory: Path) -> list[dict]:
-    """扫描目录中的 FBX 文件，返回元数据列表"""
+    """递归扫描目录中的 FBX 文件，返回元数据列表"""
     results = []
     if not directory.exists():
         return results
-    for f in sorted(directory.glob("*.fbx")):
+    for f in sorted(directory.rglob("*.fbx")):
         stat = f.stat()
         results.append({
             "name": f.stem,
