@@ -1,12 +1,789 @@
 {
-  "generated_at": "2026-04-18T12:18:32.792432",
+  "generated_at": "2026-04-18T13:36:23.726106",
   "characters": [
+    {
+      "name": "abe_tpose",
+      "filename": "abe_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\abe_tpose.fbx",
+      "size": 41839904,
+      "modified": 1776490265.3811746
+    },
+    {
+      "name": "aciana_tpose",
+      "filename": "aciana_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\aciana_tpose.fbx",
+      "size": 12168912,
+      "modified": 1776487704.978274
+    },
+    {
+      "name": "adam_tpose",
+      "filename": "adam_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\adam_tpose.fbx",
+      "size": 86917296,
+      "modified": 1776487721.9680097
+    },
+    {
+      "name": "aiden_tpose",
+      "filename": "aiden_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\aiden_tpose.fbx",
+      "size": 1015584,
+      "modified": 1776487725.2823174
+    },
+    {
+      "name": "aj_tpose",
+      "filename": "aj_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\aj_tpose.fbx",
+      "size": 6991376,
+      "modified": 1776487731.6872003
+    },
+    {
+      "name": "akai_e_espiritu_tpose",
+      "filename": "akai_e_espiritu_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\akai_e_espiritu_tpose.fbx",
+      "size": 4198688,
+      "modified": 1776487738.0268571
+    },
+    {
+      "name": "alex_tpose",
+      "filename": "alex_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\alex_tpose.fbx",
+      "size": 13815152,
+      "modified": 1776488577.6586943
+    },
+    {
+      "name": "alexis_tpose",
+      "filename": "alexis_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\alexis_tpose.fbx",
+      "size": 1852976,
+      "modified": 1776487744.1418562
+    },
+    {
+      "name": "alien_soldier_tpose",
+      "filename": "alien_soldier_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\alien_soldier_tpose.fbx",
+      "size": 98272560,
+      "modified": 1776490331.9313385
+    },
+    {
+      "name": "alpha_tpose",
+      "filename": "alpha_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\alpha_tpose.fbx",
+      "size": 2370064,
+      "modified": 1776487750.2803898
+    },
+    {
+      "name": "amy_tpose",
+      "filename": "amy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\amy_tpose.fbx",
+      "size": 28980112,
+      "modified": 1776490444.15276
+    },
+    {
+      "name": "arissa_tpose",
+      "filename": "arissa_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\arissa_tpose.fbx",
+      "size": 6879712,
+      "modified": 1776487756.7166588
+    },
+    {
+      "name": "astra_tpose",
+      "filename": "astra_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\astra_tpose.fbx",
+      "size": 101322256,
+      "modified": 1776490477.5752606
+    },
+    {
+      "name": "big_vegas_tpose",
+      "filename": "big_vegas_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\big_vegas_tpose.fbx",
+      "size": 3834400,
+      "modified": 1776487763.1639063
+    },
+    {
+      "name": "brady_tpose",
+      "filename": "brady_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\brady_tpose.fbx",
+      "size": 115604352,
+      "modified": 1776490287.2275112
+    },
+    {
+      "name": "brian_tpose",
+      "filename": "brian_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\brian_tpose.fbx",
+      "size": 54869760,
+      "modified": 1776488371.714379
+    },
+    {
+      "name": "brute_tpose",
+      "filename": "brute_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\brute_tpose.fbx",
+      "size": 24341360,
+      "modified": 1776488331.703928
+    },
+    {
+      "name": "bryce_tpose",
+      "filename": "bryce_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\bryce_tpose.fbx",
+      "size": 53981136,
+      "modified": 1776490305.9301558
+    },
+    {
+      "name": "castle_guard_01_tpose",
+      "filename": "castle_guard_01_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\castle_guard_01_tpose.fbx",
+      "size": 5302672,
+      "modified": 1776488115.7892714
+    },
+    {
+      "name": "castle_guard_02_tpose",
+      "filename": "castle_guard_02_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\castle_guard_02_tpose.fbx",
+      "size": 5308720,
+      "modified": 1776488059.1293786
+    },
+    {
+      "name": "chad_tpose",
+      "filename": "chad_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\chad_tpose.fbx",
+      "size": 53963824,
+      "modified": 1776488549.4587865
+    },
+    {
+      "name": "claire_tpose",
+      "filename": "claire_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\claire_tpose.fbx",
+      "size": 7773424,
+      "modified": 1776488280.4122045
+    },
+    {
+      "name": "copzombie_l_actisdato_tpose",
+      "filename": "copzombie_l_actisdato_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\copzombie_l_actisdato_tpose.fbx",
+      "size": 22052544,
+      "modified": 1776488194.2646825
+    },
+    {
+      "name": "crypto_tpose",
+      "filename": "crypto_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\crypto_tpose.fbx",
+      "size": 16610864,
+      "modified": 1776490435.9102435
+    },
+    {
+      "name": "david_tpose",
+      "filename": "david_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\david_tpose.fbx",
+      "size": 50204608,
+      "modified": 1776489355.598027
+    },
+    {
+      "name": "demon_t_wiezzorek_tpose",
+      "filename": "demon_t_wiezzorek_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\demon_t_wiezzorek_tpose.fbx",
+      "size": 11329840,
+      "modified": 1776487938.4150538
+    },
+    {
+      "name": "doozy_tpose",
+      "filename": "doozy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\doozy_tpose.fbx",
+      "size": 53856816,
+      "modified": 1776488588.5713751
+    },
+    {
+      "name": "drake_tpose",
+      "filename": "drake_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\drake_tpose.fbx",
+      "size": 82992864,
+      "modified": 1776489022.6992276
+    },
+    {
+      "name": "dreyar_by_maure_tpose",
+      "filename": "dreyar_by_maure_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\dreyar_by_maure_tpose.fbx",
+      "size": 7680608,
+      "modified": 1776487769.5722706
+    },
+    {
+      "name": "dummy_tpose",
+      "filename": "dummy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\dummy_tpose.fbx",
+      "size": 41547488,
+      "modified": 1776489997.4623394
+    },
+    {
+      "name": "elizabeth_tpose",
+      "filename": "elizabeth_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\elizabeth_tpose.fbx",
+      "size": 56196816,
+      "modified": 1776489042.0557203
+    },
+    {
+      "name": "ely_by_katienza_tpose",
+      "filename": "ely_by_katienza_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\ely_by_katienza_tpose.fbx",
+      "size": 4928496,
+      "modified": 1776487775.941252
+    },
+    {
+      "name": "erika_archer_tpose",
+      "filename": "erika_archer_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\erika_archer_tpose.fbx",
+      "size": 19585584,
+      "modified": 1776488301.3377035
+    },
+    {
+      "name": "erika_archer_with_bowarrow_tpose",
+      "filename": "erika_archer_with_bowarrow_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\erika_archer_with_bowarrow_tpose.fbx",
+      "size": 25094672,
+      "modified": 1776488309.985771
+    },
+    {
+      "name": "eve_by_jgonzales_tpose",
+      "filename": "eve_by_jgonzales_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\eve_by_jgonzales_tpose.fbx",
+      "size": 15340304,
+      "modified": 1776487782.7724762
+    },
+    {
+      "name": "exo_gray_tpose",
+      "filename": "exo_gray_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\exo_gray_tpose.fbx",
+      "size": 32207120,
+      "modified": 1776487791.3731
+    },
+    {
+      "name": "exo_red_tpose",
+      "filename": "exo_red_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\exo_red_tpose.fbx",
+      "size": 34269920,
+      "modified": 1776487802.636412
+    },
+    {
+      "name": "ganfaul_m_aure_tpose",
+      "filename": "ganfaul_m_aure_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\ganfaul_m_aure_tpose.fbx",
+      "size": 7309200,
+      "modified": 1776487944.7859664
+    },
+    {
+      "name": "gas_mask_tpose",
+      "filename": "gas_mask_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\gas_mask_tpose.fbx",
+      "size": 142437824,
+      "modified": 1776490207.6104198
+    },
+    {
+      "name": "girlscout_t_masuyama_tpose",
+      "filename": "girlscout_t_masuyama_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\girlscout_t_masuyama_tpose.fbx",
+      "size": 19201024,
+      "modified": 1776488202.3974283
+    },
+    {
+      "name": "goblin_d_shareyko_tpose",
+      "filename": "goblin_d_shareyko_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\goblin_d_shareyko_tpose.fbx",
+      "size": 19123584,
+      "modified": 1776487955.021286
+    },
+    {
+      "name": "heraklios_by_a_dizon_tpose",
+      "filename": "heraklios_by_a_dizon_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\heraklios_by_a_dizon_tpose.fbx",
+      "size": 21757968,
+      "modified": 1776487812.2793627
+    },
+    {
+      "name": "jackie_tpose",
+      "filename": "jackie_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\jackie_tpose.fbx",
+      "size": 69072976,
+      "modified": 1776489370.4367378
+    },
+    {
+      "name": "james_tpose",
+      "filename": "james_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\james_tpose.fbx",
+      "size": 54671904,
+      "modified": 1776488433.5240202
+    },
+    {
+      "name": "jennifer_tpose",
+      "filename": "jennifer_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\jennifer_tpose.fbx",
+      "size": 53760432,
+      "modified": 1776490456.0409317
+    },
+    {
+      "name": "jody_tpose",
+      "filename": "jody_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\jody_tpose.fbx",
+      "size": 52961840,
+      "modified": 1776490226.748845
+    },
+    {
+      "name": "joe_tpose",
+      "filename": "joe_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\joe_tpose.fbx",
+      "size": 54631552,
+      "modified": 1776490010.87547
+    },
+    {
+      "name": "jolleen_tpose",
+      "filename": "jolleen_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\jolleen_tpose.fbx",
+      "size": 28052288,
+      "modified": 1776490186.5717711
+    },
+    {
+      "name": "jones_tpose",
+      "filename": "jones_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\jones_tpose.fbx",
+      "size": 56602720,
+      "modified": 1776488401.411706
+    },
+    {
+      "name": "josh_tpose",
+      "filename": "josh_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\josh_tpose.fbx",
+      "size": 53403232,
+      "modified": 1776488647.1147463
+    },
+    {
+      "name": "kachujin_g_rosales_tpose",
+      "filename": "kachujin_g_rosales_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\kachujin_g_rosales_tpose.fbx",
+      "size": 18686640,
+      "modified": 1776488031.232313
+    },
+    {
+      "name": "kate_tpose",
+      "filename": "kate_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\kate_tpose.fbx",
+      "size": 53094368,
+      "modified": 1776488611.2835047
+    },
+    {
+      "name": "kaya_tpose",
+      "filename": "kaya_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\kaya_tpose.fbx",
+      "size": 8792976,
+      "modified": 1776488287.2821524
+    },
+    {
+      "name": "knight_d_pelegrini_tpose",
+      "filename": "knight_d_pelegrini_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\knight_d_pelegrini_tpose.fbx",
+      "size": 10861488,
+      "modified": 1776488065.7706828
+    },
+    {
+      "name": "leonard_tpose",
+      "filename": "leonard_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\leonard_tpose.fbx",
+      "size": 53924528,
+      "modified": 1776489988.9944775
+    },
+    {
+      "name": "lewis_tpose",
+      "filename": "lewis_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\lewis_tpose.fbx",
+      "size": 45325872,
+      "modified": 1776488492.6330578
+    },
+    {
+      "name": "lola_b_styperek_tpose",
+      "filename": "lola_b_styperek_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\lola_b_styperek_tpose.fbx",
+      "size": 4029280,
+      "modified": 1776488037.5597596
+    },
+    {
+      "name": "louise_tpose",
+      "filename": "louise_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\louise_tpose.fbx",
+      "size": 49979392,
+      "modified": 1776488444.26632
+    },
+    {
+      "name": "mannequin_tpose",
+      "filename": "mannequin_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\mannequin_tpose.fbx",
+      "size": 35099440,
+      "modified": 1776490216.6863785
+    },
+    {
+      "name": "maria_j_j_ong_tpose",
+      "filename": "maria_j_j_ong_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\maria_j_j_ong_tpose.fbx",
+      "size": 15540512,
+      "modified": 1776487907.444714
+    },
+    {
+      "name": "maria_wprop_j_j_ong_tpose",
+      "filename": "maria_wprop_j_j_ong_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\maria_wprop_j_j_ong_tpose.fbx",
+      "size": 15616896,
+      "modified": 1776487914.906468
+    },
+    {
+      "name": "martha_tpose",
+      "filename": "martha_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\martha_tpose.fbx",
+      "size": 56679376,
+      "modified": 1776489055.232758
+    },
+    {
+      "name": "maw_j_laygo_tpose",
+      "filename": "maw_j_laygo_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\maw_j_laygo_tpose.fbx",
+      "size": 13121776,
+      "modified": 1776488073.189683
+    },
+    {
+      "name": "maynard_tpose",
+      "filename": "maynard_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\maynard_tpose.fbx",
+      "size": 100454544,
+      "modified": 1776489976.4430468
+    },
+    {
+      "name": "medea_by_m_arrebola_tpose",
+      "filename": "medea_by_m_arrebola_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\medea_by_m_arrebola_tpose.fbx",
+      "size": 4725856,
+      "modified": 1776487818.7021592
+    },
+    {
+      "name": "megan_tpose",
+      "filename": "megan_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\megan_tpose.fbx",
+      "size": 59319056,
+      "modified": 1776488627.700322
+    },
+    {
+      "name": "michelle_tpose",
+      "filename": "michelle_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\michelle_tpose.fbx",
+      "size": 20974352,
+      "modified": 1776488389.207544
+    },
+    {
+      "name": "morak_tpose",
+      "filename": "morak_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\morak_tpose.fbx",
+      "size": 120031776,
+      "modified": 1776488421.1727757
+    },
+    {
+      "name": "mousey_tpose",
+      "filename": "mousey_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\mousey_tpose.fbx",
+      "size": 29810096,
+      "modified": 1776488513.552076
+    },
+    {
+      "name": "mremireh_o_desbiens_tpose",
+      "filename": "mremireh_o_desbiens_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\mremireh_o_desbiens_tpose.fbx",
+      "size": 14284896,
+      "modified": 1776488209.3764756
+    },
+    {
+      "name": "mutant_tpose",
+      "filename": "mutant_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\mutant_tpose.fbx",
+      "size": 19805232,
+      "modified": 1776487826.3898158
+    },
+    {
+      "name": "nightshade_j_friedrich_tpose",
+      "filename": "nightshade_j_friedrich_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\nightshade_j_friedrich_tpose.fbx",
+      "size": 16136592,
+      "modified": 1776488052.7324538
+    },
+    {
+      "name": "ninja_tpose",
+      "filename": "ninja_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\ninja_tpose.fbx",
+      "size": 53356880,
+      "modified": 1776489003.8987577
+    },
+    {
+      "name": "olivia_tpose",
+      "filename": "olivia_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\olivia_tpose.fbx",
+      "size": 62580192,
+      "modified": 1776488484.4738553
+    },
+    {
+      "name": "ortiz_tpose",
+      "filename": "ortiz_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\ortiz_tpose.fbx",
+      "size": 43224976,
+      "modified": 1776490314.7973275
+    },
+    {
+      "name": "paladin_j_nordstrom_tpose",
+      "filename": "paladin_j_nordstrom_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\paladin_j_nordstrom_tpose.fbx",
+      "size": 9045904,
+      "modified": 1776487865.738908
+    },
+    {
+      "name": "paladin_wprop_j_nordstrom_tpose",
+      "filename": "paladin_wprop_j_nordstrom_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\paladin_wprop_j_nordstrom_tpose.fbx",
+      "size": 9202096,
+      "modified": 1776487900.101478
+    },
+    {
+      "name": "parasite_l_starkie_tpose",
+      "filename": "parasite_l_starkie_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\parasite_l_starkie_tpose.fbx",
+      "size": 15772080,
+      "modified": 1776488245.0733488
+    },
+    {
+      "name": "passive_marker_man_tpose",
+      "filename": "passive_marker_man_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\passive_marker_man_tpose.fbx",
+      "size": 5677696,
+      "modified": 1776487832.7446823
+    },
+    {
+      "name": "peasant_girl_tpose",
+      "filename": "peasant_girl_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\peasant_girl_tpose.fbx",
+      "size": 4962784,
+      "modified": 1776488079.7395744
+    },
+    {
+      "name": "peasant_man_tpose",
+      "filename": "peasant_man_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\peasant_man_tpose.fbx",
+      "size": 3624384,
+      "modified": 1776488086.0602036
+    },
+    {
+      "name": "pete_tpose",
+      "filename": "pete_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\pete_tpose.fbx",
+      "size": 65248544,
+      "modified": 1776488570.3620572
+    },
+    {
+      "name": "pirate_by_p_konstantinov_tpose",
+      "filename": "pirate_by_p_konstantinov_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\pirate_by_p_konstantinov_tpose.fbx",
+      "size": 7046128,
+      "modified": 1776487839.142234
+    },
+    {
+      "name": "prisoner_b_styperek_tpose",
+      "filename": "prisoner_b_styperek_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\prisoner_b_styperek_tpose.fbx",
+      "size": 11450992,
+      "modified": 1776488216.8394015
+    },
+    {
+      "name": "pumpkinhulk_l_shaw_tpose",
+      "filename": "pumpkinhulk_l_shaw_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\pumpkinhulk_l_shaw_tpose.fbx",
+      "size": 13419072,
+      "modified": 1776488252.176987
+    },
+    {
+      "name": "racer_tpose",
+      "filename": "racer_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\racer_tpose.fbx",
+      "size": 52386288,
+      "modified": 1776488598.699324
+    },
+    {
+      "name": "remy_tpose",
+      "filename": "remy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\remy_tpose.fbx",
+      "size": 28338736,
+      "modified": 1776488352.8164144
+    },
+    {
+      "name": "romero_tpose",
+      "filename": "romero_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\romero_tpose.fbx",
+      "size": 110587680,
+      "modified": 1776488472.6575022
+    },
+    {
+      "name": "roth_tpose",
+      "filename": "roth_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\roth_tpose.fbx",
+      "size": 43214864,
+      "modified": 1776488505.07961
+    },
+    {
+      "name": "shannon_tpose",
+      "filename": "shannon_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\shannon_tpose.fbx",
+      "size": 52055952,
+      "modified": 1776490256.087486
+    },
+    {
+      "name": "skeletonzombie_t_avelange_tpose",
+      "filename": "skeletonzombie_t_avelange_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\skeletonzombie_t_avelange_tpose.fbx",
+      "size": 17508416,
+      "modified": 1776488259.630772
+    },
+    {
+      "name": "sophie_tpose",
+      "filename": "sophie_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\sophie_tpose.fbx",
+      "size": 50037840,
+      "modified": 1776488381.699054
+    },
+    {
+      "name": "sporty_granny_tpose",
+      "filename": "sporty_granny_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\sporty_granny_tpose.fbx",
+      "size": 5063600,
+      "modified": 1776488293.6144218
+    },
+    {
+      "name": "steve_tpose",
+      "filename": "steve_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\steve_tpose.fbx",
+      "size": 117142864,
+      "modified": 1776490497.3788414
+    },
+    {
+      "name": "survivor_a_lusth_tpose",
+      "filename": "survivor_a_lusth_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\survivor_a_lusth_tpose.fbx",
+      "size": 19214816,
+      "modified": 1776488224.379738
+    },
+    {
+      "name": "swat_guy_tpose",
+      "filename": "swat_guy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\swat_guy_tpose.fbx",
+      "size": 115014208,
+      "modified": 1776488536.7225032
+    },
+    {
+      "name": "swat_tpose",
+      "filename": "swat_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\swat_tpose.fbx",
+      "size": 5674912,
+      "modified": 1776487845.547801
+    },
+    {
+      "name": "the_boss_tpose",
+      "filename": "the_boss_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\the_boss_tpose.fbx",
+      "size": 6242272,
+      "modified": 1776487852.0288336
+    },
+    {
+      "name": "timmy_tpose",
+      "filename": "timmy_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\timmy_tpose.fbx",
+      "size": 34244368,
+      "modified": 1776488453.305345
+    },
+    {
+      "name": "ty_tpose",
+      "filename": "ty_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\ty_tpose.fbx",
+      "size": 5253680,
+      "modified": 1776488092.4592173
+    },
+    {
+      "name": "uriel_a_plotexia_tpose",
+      "filename": "uriel_a_plotexia_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\uriel_a_plotexia_tpose.fbx",
+      "size": 13619504,
+      "modified": 1776488099.6299846
+    },
+    {
+      "name": "vampire_a_lusth_tpose",
+      "filename": "vampire_a_lusth_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\vampire_a_lusth_tpose.fbx",
+      "size": 16130944,
+      "modified": 1776488045.3871136
+    },
+    {
+      "name": "vanguard_by_t_choonyung_tpose",
+      "filename": "vanguard_by_t_choonyung_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\vanguard_by_t_choonyung_tpose.fbx",
+      "size": 11404448,
+      "modified": 1776487858.7102208
+    },
+    {
+      "name": "warrok_w_kurniawan_tpose",
+      "filename": "warrok_w_kurniawan_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\warrok_w_kurniawan_tpose.fbx",
+      "size": 12072960,
+      "modified": 1776488106.5592146
+    },
+    {
+      "name": "warzombie_f_pedroso_tpose",
+      "filename": "warzombie_f_pedroso_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\warzombie_f_pedroso_tpose.fbx",
+      "size": 13774720,
+      "modified": 1776488231.4295497
+    },
+    {
+      "name": "whiteclown_n_hallin_tpose",
+      "filename": "whiteclown_n_hallin_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\whiteclown_n_hallin_tpose.fbx",
+      "size": 6643920,
+      "modified": 1776488237.782215
+    },
+    {
+      "name": "wizard_tpose",
+      "filename": "wizard_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\wizard_tpose.fbx",
+      "size": 39382400,
+      "modified": 1776488343.5266838
+    },
     {
       "name": "x_bot_tpose",
       "filename": "x_bot_tpose.fbx",
       "path": "D:\\BlenderAgent\\animations\\characters\\x_bot_tpose.fbx",
       "size": 1750032,
       "modified": 1776433628.7394993
+    },
+    {
+      "name": "y_bot_tpose",
+      "filename": "y_bot_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\y_bot_tpose.fbx",
+      "size": 1982368,
+      "modified": 1776488359.0477786
+    },
+    {
+      "name": "yaku_j_ignite_tpose",
+      "filename": "yaku_j_ignite_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\yaku_j_ignite_tpose.fbx",
+      "size": 20107744,
+      "modified": 1776488266.9378772
+    },
+    {
+      "name": "zlorp_tpose",
+      "filename": "zlorp_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\zlorp_tpose.fbx",
+      "size": 121570336,
+      "modified": 1776490515.8617158
+    },
+    {
+      "name": "zombiegirl_w_kurniawan_tpose",
+      "filename": "zombiegirl_w_kurniawan_tpose.fbx",
+      "path": "D:\\BlenderAgent\\animations\\characters\\zombiegirl_w_kurniawan_tpose.fbx",
+      "size": 15897248,
+      "modified": 1776488273.899704
     }
   ],
   "motions": [
@@ -14278,7 +15055,7 @@
     }
   ],
   "stats": {
-    "total_characters": 1,
+    "total_characters": 112,
     "total_motions": 2038
   }
 }
