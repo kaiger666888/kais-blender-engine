@@ -1,11 +1,13 @@
 """Blender Agent HTTP 客户端 — 封装与 Server 的完整交互流程"""
 
 import time
-from typing import Optional
+from typing import Dict, List, Optional, Tuple
 
 import requests
 
+from camera_presets import CameraPreset
 from generators.animation import AnimationParams, generate_animation_script
+from generators.pose import generate_pose_script
 
 
 class BlenderAgentClient:
@@ -77,12 +79,13 @@ class BlenderAgentClient:
                 return {"status": "timeout", "error": f"轮询超时 ({max_wait}s)"}
             time.sleep(interval)
 
-    def wait_and_get_outputs(self, job_id: str, interval: float = 5.0, max_wait: float = 3600.0) -> dict:
+    def wait_and_get_outputs(self, job_id: str, interval: float = 5.0, max_wait: float = 3600.0, prefix: str = "") -> dict:
         """等待任务完成并返回输出文件列表"""
         status = self.poll_job(job_id, interval, max_wait)
         if status["status"] != "completed":
             return {"status": status["status"], "error": status.get("error", ""), "outputs": []}
-        outputs = self._get("/outputs")
+        params = {"prefix": prefix} if prefix else {}
+        outputs = self._get("/outputs", params=params)
         return {"status": "completed", "outputs": outputs["files"]}
 
     # ── 输出文件 ──────────────────────────────────────────
@@ -125,12 +128,8 @@ class BlenderAgentClient:
         """
         caps = self._ensure_caps()
         output_dir = caps["output_dir"]
-
-        # 从 output_dir 推导 animations 目录（同级的 animations/）
-        from pathlib import PureWindowsPath
-        work_dir = str(PureWindowsPath(output_dir).parent)
-        chars_dir = f"{work_dir}/animations/characters"
-        motions_dir = f"{work_dir}/animations/motions"
+        chars_dir = caps["characters_dir"]
+        motions_dir = caps["motions_dir"]
 
         script = generate_animation_script(
             params,
@@ -140,7 +139,64 @@ class BlenderAgentClient:
         )
 
         job_id = self.run_async(script, timeout=timeout)
-        result = self.wait_and_get_outputs(job_id, interval=poll_interval, max_wait=timeout)
+        result = self.wait_and_get_outputs(job_id, interval=poll_interval, max_wait=timeout, prefix=params.preset_name)
+        result["job_id"] = job_id
+        return result
+
+    # ── 高级接口：姿态渲染 ────────────────────────────────
+
+    def render_pose(
+        self,
+        preset_name: str,
+        bone_rotations: Optional[Dict[str, Tuple[float, float, float]]] = None,
+        ik_targets: Optional[Dict[str, Tuple[float, float, float]]] = None,
+        ik_chain_counts: Optional[Dict[str, int]] = None,
+        action_name: Optional[str] = None,
+        camera_preset: CameraPreset = CameraPreset.FRONT,
+        custom_angles: Optional[list] = None,
+        resolution: int = 1024,
+        samples: int = 256,
+        timeout: int = 600,
+        poll_interval: float = 5.0,
+    ) -> dict:
+        """一键姿态渲染：生成脚本 → 异步提交 → 轮询 → 返回输出
+
+        Args:
+            preset_name: 角色名（对应 cache/{preset_name}.blend）
+            bone_rotations: FK 骨骼旋转 {bone_name: (rx, ry, rz)}
+            ik_targets: IK 目标位置 {末端骨骼: (x, y, z)}
+            ik_chain_counts: IK 链长度覆盖 {末端骨骼: chain_count}
+            action_name: 切换到指定 NLA action
+            camera_preset: 相机预设
+            custom_angles: 自定义相机角度
+            resolution: 渲染分辨率
+            samples: Cycles 采样数
+            timeout: Blender 执行超时（秒）
+            poll_interval: 轮询间隔
+
+        Returns:
+            {"status": "completed", "job_id": "...", "outputs": [...]}
+        """
+        caps = self._ensure_caps()
+        output_dir = caps["output_dir"]
+        cache_dir = caps["cache_dir"]
+
+        script = generate_pose_script(
+            preset_name=preset_name,
+            bone_rotations=bone_rotations,
+            ik_targets=ik_targets,
+            ik_chain_counts=ik_chain_counts,
+            action_name=action_name,
+            camera_preset=camera_preset,
+            custom_angles=custom_angles,
+            resolution=resolution,
+            samples=samples,
+            output_dir=output_dir,
+            cache_dir=cache_dir,
+        )
+
+        job_id = self.run_async(script, timeout=timeout)
+        result = self.wait_and_get_outputs(job_id, interval=poll_interval, max_wait=timeout, prefix=preset_name)
         result["job_id"] = job_id
         return result
 

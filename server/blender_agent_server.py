@@ -120,6 +120,9 @@ def capabilities():
         "gpu": gpu_info,
         "addons": sorted(addons),
         "output_dir": str(OUTPUT_DIR),
+        "characters_dir": str(CHARACTERS_DIR),
+        "motions_dir": str(MOTIONS_DIR),
+        "cache_dir": str(CACHE_DIR),
     }
 
 
