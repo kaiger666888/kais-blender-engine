@@ -123,6 +123,7 @@ def capabilities():
         "characters_dir": str(CHARACTERS_DIR),
         "motions_dir": str(MOTIONS_DIR),
         "cache_dir": str(CACHE_DIR),
+        "assets_dir": str(WORK_DIR / "assets"),
     }
 
 

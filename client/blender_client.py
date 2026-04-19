@@ -8,6 +8,7 @@ import requests
 from camera_presets import CameraPreset
 from generators.animation import AnimationParams, generate_animation_script
 from generators.pose import generate_pose_script
+from generators.scene import SceneParams, generate_scene_script
 
 
 class BlenderAgentClient:
@@ -197,6 +198,52 @@ class BlenderAgentClient:
 
         job_id = self.run_async(script, timeout=timeout)
         result = self.wait_and_get_outputs(job_id, interval=poll_interval, max_wait=timeout, prefix=preset_name)
+        result["job_id"] = job_id
+        return result
+
+    # ── 高级接口：场景渲染 ────────────────────────────────
+
+    def list_scene_assets(self, source: str = "", category: str = "", q: str = "") -> dict:
+        """查询场景素材（HDRI / 3D模型 / PBR纹理）"""
+        params = {}
+        if source:
+            params["source"] = source
+        if category:
+            params["category"] = category
+        if q:
+            params["q"] = q
+        return self._get("/scene-assets", params=params)
+
+    def render_scene(
+        self,
+        params: SceneParams,
+        timeout: int = 1800,
+        poll_interval: float = 10.0,
+    ) -> dict:
+        """一键场景渲染：生成脚本 → 异步提交 → 轮询 → 返回输出
+
+        Args:
+            params: 场景渲染参数（HDRI + 模型 + 可选角色动画）
+            timeout: Blender 执行超时（秒）
+            poll_interval: 轮询间隔
+
+        Returns:
+            {"status": "completed", "job_id": "...", "outputs": [...]}
+        """
+        caps = self._ensure_caps()
+        output_dir = caps["output_dir"]
+        assets_dir = caps.get("assets_dir", "")
+
+        script = generate_scene_script(
+            params,
+            output_dir=output_dir,
+            assets_dir=assets_dir,
+            characters_dir=caps.get("characters_dir", ""),
+            motions_dir=caps.get("motions_dir", ""),
+        )
+
+        job_id = self.run_async(script, timeout=timeout)
+        result = self.wait_and_get_outputs(job_id, interval=poll_interval, max_wait=timeout, prefix=params.scene_name)
         result["job_id"] = job_id
         return result
 
