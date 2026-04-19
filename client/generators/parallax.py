@@ -38,7 +38,7 @@ class ParallaxParams(BaseModel):
     # 渲染
     output_format: Literal["video", "frames", "both"] = "video"
     resolution: Tuple[int, int] = Field((1080, 1920), description="(宽, 高)，默认9:16竖屏")
-    engine: Literal["BLENDER_EEVEE_NEXT", "CYCLES"] = "BLENDER_EEVEE_NEXT"
+    engine: Literal["BLENDER_EEVEE", "BLENDER_WORKBENCH", "CYCLES"] = "BLENDER_EEVEE"
     samples: int = Field(64, description="Cycles采样数(Eevee忽略)")
 
     # 灯光
@@ -170,13 +170,18 @@ elif CAMERA_PRESET == "orbit":
 elif CAMERA_PRESET == "static":
     cam.location = (0.0, -CAM_DISTANCE, 0.0)
 
-# F-Curve 缓入缓出
+# F-Curve 缓入缓出（Blender 5.1+ 默认已是BEZIER，直接设置handle类型）
 if cam.animation_data and cam.animation_data.action:
-    for fc in cam.animation_data.action.fcurves:
-        for kf in fc.keyframe_points:
-            kf.interpolation = 'BEZIER'
-            kf.handle_left_type = 'AUTO_CLAMPED'
-            kf.handle_right_type = 'AUTO_CLAMPED'
+    try:
+        for channel in cam.animation_data.action.channels:
+            if hasattr(channel, 'fcurves'):
+                for fc in channel.fcurves:
+                    for kf in fc.keyframe_points:
+                        kf.interpolation = 'BEZIER'
+                        kf.handle_left_type = 'AUTO_CLAMPED'
+                        kf.handle_right_type = 'AUTO_CLAMPED'
+    except Exception:
+        pass  # Blender 5.1+ fcurves API已变更，默认BEZIER足够
 
 # ====== 灯光 ======
 light_data = bpy.data.lights.new(name="ParallaxLight", type='SUN')
@@ -189,15 +194,27 @@ bpy.context.scene.collection.objects.link(light_obj)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 if OUTPUT_FORMAT in ("video", "both"):
-    video_path = os.path.join(OUTPUT_DIR, f"{{PRESET_NAME}}.mp4")
-    scene.render.filepath = video_path
-    scene.render.image_settings.file_format = 'FFMPEG'
-    scene.render.ffmpeg.format = 'MPEG4'
-    scene.render.ffmpeg.codec = 'H264'
+    frames_dir = os.path.join(OUTPUT_DIR, f"{{PRESET_NAME}}_frames")
+    scene.render.filepath = frames_dir + "/"
+    scene.render.image_settings.file_format = 'PNG'
+    scene.render.image_settings.color_mode = 'RGBA'
     bpy.ops.render.render(animation=True)
-    print(f"✅ Video: {{video_path}}")
+    print(f"✅ Frames: {{frames_dir}}/")
+    # 尝试用ffmpeg合成视频
+    try:
+        import subprocess
+        video_path = os.path.join(OUTPUT_DIR, f"{{PRESET_NAME}}.mp4")
+        w, h = RESOLUTION
+        cmd = f'ffmpeg -y -framerate {{FPS}} -i "{{frames_dir}}/%04d.png" -c:v libx264 -pix_fmt yuv420p -s {{w}}x{{h}} "{{video_path}}"'
+        subprocess.run(cmd, shell=True, capture_output=True)
+        if os.path.exists(video_path):
+            print(f"✅ Video: {{video_path}}")
+        else:
+            print(f"⚠️  ffmpeg not available, frames saved to {{frames_dir}}/")
+    except Exception:
+        print(f"⚠️  ffmpeg合成失败，帧序列已保存: {{frames_dir}}/")
 
-if OUTPUT_FORMAT in ("frames", "both"):
+if OUTPUT_FORMAT in ("frames",):
     frames_dir = os.path.join(OUTPUT_DIR, f"{{PRESET_NAME}}_frames")
     scene.render.filepath = frames_dir + "/"
     scene.render.image_settings.file_format = 'PNG'
